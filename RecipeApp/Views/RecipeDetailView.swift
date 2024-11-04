@@ -17,18 +17,16 @@ struct RecipeDetailView: View {
                 Text("Ingredients")
                     .font(.title2)
                     .bold()
-
                 ForEach(recipe.ingredients) { ingredient in
                     Text("• \(ingredient.amount) \(ingredient.unit) \(ingredient.name)")
                 }
-
                 Text("Instructions")
                     .font(.title2)
                     .bold()
                     .padding(.top)
 
-                ForEach(Array(recipe.instructions.enumerated()), id: \.offset) { index, instruction in
-                    Text("\(index + 1). \(instruction)")
+                ForEach(recipe.instructions, id: \.self) { instruction in
+                    Text("\(instruction)")
                         .padding(.bottom, 4)
                 }
             }

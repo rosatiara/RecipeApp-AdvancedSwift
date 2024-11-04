@@ -18,7 +18,8 @@ actor RecipeService {
 
     func fetchRecipes() async throws -> [Recipe] {
         try await Task.sleep(nanoseconds: 1_000_000_000)
-        return recipes
+
+        return Recipe.getDefaultRecipes()
     }
 
     func addRecipe(_ recipe: Recipe) async {

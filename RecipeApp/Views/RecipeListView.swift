@@ -19,7 +19,9 @@ struct RecipeListView: View {
         NavigationView {
             List(viewModel.recipes) { recipe in
                 NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
-                    RecipeRowView(recipe: recipe)
+                    RecipeRowView(recipe: recipe) { isFavourite in
+                        Image(systemName: isFavourite ? "heart.fill" : "heart" )
+                    }
                 }
             }
             .navigationTitle("Recipes")

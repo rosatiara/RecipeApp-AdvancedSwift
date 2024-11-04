@@ -8,16 +8,22 @@
 import Foundation
 import SwiftUI
 
-struct RecipeRowView: View {
+struct RecipeRowView<Content: View>: View {
     let recipe: Recipe
 
+    let favouriteView: (Bool) -> Content
+
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(recipe.name)
-                .font(.headline)
-            Text("\(recipe.cookingTime) minutes • \(recipe.difficulty.rawValue.capitalized)")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+        HStack{
+            VStack(alignment: .leading) {
+                Text(recipe.name)
+                    .font(.headline)
+                Text("\(recipe.cookingTime) minutes • \(recipe.difficulty.rawValue.capitalized)")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            favouriteView(recipe.isFavorite)
         }
     }
 }
