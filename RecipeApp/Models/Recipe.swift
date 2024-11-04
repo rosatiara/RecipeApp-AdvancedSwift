@@ -56,6 +56,27 @@ struct Recipe: Identifiable, Codable {
         self.difficulty = difficulty
         self.isFavorite = isFavorite
     }
+
+    static func getDefaultRecipes() -> [Recipe] {
+        return [
+            Recipe(
+                name: "Fried Rice",
+                ingredients: [],
+                instructions: {
+                    "First we crack some egg"
+                    "Then we add some water"
+                    "Then we add some rice"
+                    "Then we add some salt"
+                    "Then we add some pepper"
+                    "Stir till it smells great 😁"
+                    "Plate it"
+                    "Enjoy your whats so called \"FRIED RICE\"!"
+                },
+                cookingTime: 40,
+                difficulty: .easy
+            )
+        ]
+    }
 }
 
 struct Ingredient: Identifiable, Codable {
