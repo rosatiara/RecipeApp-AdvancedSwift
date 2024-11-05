@@ -34,14 +34,6 @@ struct Recipe: Identifiable, Codable {
     var isFavorite: Bool = false
     var kind: KindOfRecipe
 
-    enum Difficulty: String, Codable {
-        case easy, medium, hard
-    }
-
-    enum KindOfRecipe: String, Codable {
-        case regular, vegan, fatFree, carbFree
-    }
-
     init(id: UUID = UUID(),
          name: String,
          ingredients: [Ingredient],
