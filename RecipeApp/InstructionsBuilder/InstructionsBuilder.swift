@@ -10,7 +10,11 @@ import SwiftUI
 @resultBuilder
 struct InstructionsBuilder {
     static func buildBlock(_ components: String...) -> [String] {
-        components
+        components.flatMap { component in
+            component.split(separator: "\n").enumerated().map { index, line in
+                "\(index + 1). \(line.trimmingCharacters(in: .whitespaces))"
+            }
+        }
     }
 
     static func buildOptional(_ component: [String]?) -> [String] {

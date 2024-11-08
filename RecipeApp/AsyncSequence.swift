@@ -32,24 +32,11 @@ struct RecipeSearchSequence: AsyncSequence {
         }
     }
 
+    //TODO:
+    // use case asynsequence, actor (edit resep barengan), sm isolatedfunctions
+
     func makeAsyncIterator() -> AsyncIterator {
         AsyncIterator(searchTerm: searchTerm, recipeService: recipeService)
-    }
-
-    func stream() -> AsyncThrowingStream<Recipe, Error> {
-        AsyncThrowingStream { continuation in
-            Task {
-                do {
-                    let allRecipes = try await recipeService.fetchRecipes()
-                    for recipe in allRecipes where recipe.name.localizedCaseInsensitiveContains(searchTerm) {
-                        continuation.yield(recipe)
-                    }
-                    continuation.finish()
-                } catch {
-                    continuation.finish(throwing: error)
-                }
-            }
-        }
     }
 
     func fetchRecipes() async throws -> [Recipe] {
@@ -68,8 +55,9 @@ struct RecipeSearchSequence: AsyncSequence {
                         name: "Fried Rice",
                         ingredients: [],
                         instructions: {
+                            //TODO: use buildBlock instructions for adding numbers
                             """
-                            1. Crack some egg
+                            "Crack some egg"
                             2. Add some water
                             3. Add some rice
                             4. Then we add some salt

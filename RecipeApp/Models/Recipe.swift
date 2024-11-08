@@ -59,14 +59,14 @@ struct Recipe: Identifiable, Codable {
                 ingredients: [],
                 instructions: {
                     """
-                    1. Crack some egg
-                    2. Add some water
-                    3. Add some rice
-                    4. Then we add some salt
-                    5. Then we add some pepper
-                    6. Stir till it smells great 😁
-                    7. Plate it
-                    8. Enjoy your what's so called "FRIED RICE"!
+                    Crack some egg
+                    Add some water
+                    Add some rice
+                    Then we add some salt
+                    Then we add some pepper
+                    Stir till it smells great 😁
+                    Plate it
+                    Enjoy your what's so called "FRIED RICE"!
                     """
                 },
                 cookingTime: 40,
@@ -78,14 +78,14 @@ struct Recipe: Identifiable, Codable {
                 ingredients: [],
                 instructions: {
                     """
-                    1. Pour oats into a glass or bowl
-                    2. Add 2 scoops of milk
-                    3. Stir
-                    4. Add some cocoa powder
-                    5. Stir again
-                    6. Add slices of banana
-                    7. Refrigerate for 3 hours or overnight
-                    8. "Enjoy the overnight oats"!
+                    Pour oats into a glass or bowl
+                    Add 2 scoops of milk
+                    Stir
+                    Add some cocoa powder
+                    Stir again
+                    Add slices of banana
+                    Refrigerate for 3 hours or overnight
+                    Enjoy the overnight oats!
                     """
                 },
                 cookingTime: 10,
@@ -94,6 +94,7 @@ struct Recipe: Identifiable, Codable {
             )
         ]
     }
+
 }
 
 struct Ingredient: Identifiable, Codable {
