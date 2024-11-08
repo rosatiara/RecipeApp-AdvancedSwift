@@ -12,13 +12,12 @@ import SwiftUI
 macro RecipeInit() = #externalMacro(module: "RecipeMacros", type: "RecipeInitMacro")
 
 // MARK: - Recipe Service Actor
-actor RecipeService {
+class RecipeService {
     private var recipes: [Recipe] = []
     private let saveQueue = DispatchQueue(label: "com.recipeapp.saveQueue")
 
     func fetchRecipes() async throws -> [Recipe] {
         try await Task.sleep(nanoseconds: 1_000_000_000)
-
         return Recipe.getDefaultRecipes()
     }
 
@@ -27,7 +26,15 @@ actor RecipeService {
         await saveRecipes()
     }
 
-    //TODO: coba edit resep, terus liat apakah instructionsnya urutan atau engga
+    func editRecipe(at index: Int, newRecipe: Recipe) async {
+        guard recipes.indices.contains(index) else {
+            print("Recipe index out of bounds")
+            return
+        }
+
+        recipes[index] = newRecipe
+        await saveRecipes()
+    }
 
     private func saveRecipes() async {
         await withCheckedContinuation { continuation in
@@ -37,6 +44,7 @@ actor RecipeService {
         }
     }
 }
+
 
 // MARK: - Task Group Example
 extension RecipeService {
